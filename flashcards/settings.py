@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 
     # Project-specific
     'users',
-    'cards',
+    'flashcards',
 ]
 
 MIDDLEWARE = [
