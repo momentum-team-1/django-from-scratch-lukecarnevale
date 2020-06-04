@@ -16,10 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
+from flashcards import views as flashcards_views
 
 urlpatterns = [
+    path('', flashcards_views.homepage, name="homepage"),
+    path('flashcards/', flashcards_views.decks, name='deck_list'),
     path('admin/', admin.site.urls),
-    path(r'accounts/', include('registration.backends.simple.urls')),
+    path('accounts/', include('registration.backends.simple.urls')),
+    path('decks/new/', flashcards_views.add_deck, name='add_deck'),
 ]
 
 if settings.DEBUG:

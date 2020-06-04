@@ -143,4 +143,4 @@ INTERNAL_IPS = [
 
 #Django application settings
 
-ACCOUNT_REGISTRATION_DAYS = 7
+LOGIN_REDIRECT_URL = '/'

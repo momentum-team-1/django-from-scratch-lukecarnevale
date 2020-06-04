@@ -1,0 +1,13 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Flashcards</h1>
+
+<div>
+    <h2>Welcome to the Study Cards website!</h2>
+    <p>Please <a href="{% url 'auth_login' %}">login</a> or <a herf="{% url 'registration_register' %}">Create a New Account</a>.</p>
+
+</div>
+{% endblock %}

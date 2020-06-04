@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Add a new deck of study cards</h2>
+
+<form action="{% url 'add_deck' %}" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <div>
+    <button type="submit">Add new deck</button>
+  </div>
+</form>
+
+{% endblock %}
