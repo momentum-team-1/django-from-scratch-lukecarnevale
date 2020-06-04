@@ -1,20 +1,21 @@
 from django.db import models
 from users.models import User
 
-class Tag(models.Model):
-    tag = models.CharField(max_length=100, unique=True)
-
-    def __str__(self):
-        return self.tag
 
 # Create your models here.
 class Deck (models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='decks')
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='decks', null=True)
+    date = models.DateTimeField(auto_now_add=True, blank=True)
     title = models.CharField(max_length=255)
     question = models.CharField(max_length=255)
     
-    def __str__(self):
-        return f"{self.title} {self.question}"
+    #add
+    #delete
+    #edit
+
+
+    # def __str__(self):
+    #     return f"{self.title} {self.question}"
 
 
 class Card (models.Model):
@@ -22,7 +23,13 @@ class Card (models.Model):
     title = models.CharField(max_length=255)
     answer = models.CharField(max_length=255)
 
-    def __str__(self):
-        return f"{self.title} {self.answer}"
+    #attempts
+    #successes
+    #add
+    #delete
+    #edit
+
+    # def __str__(self):
+    #     return f"{self.title} {self.answer}"
 
 #add more classes down here, but migrate after creating
