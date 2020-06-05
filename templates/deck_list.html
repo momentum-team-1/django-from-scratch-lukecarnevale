@@ -5,7 +5,7 @@
 
 <ol>
     {% for deck in decks %}
-        <li>{{ deck.title }}</li>
+        <li><a href="{% url 'deck_detail' deck_pk=deck.pk %}">{{ deck.title }}</a></li>
     {% endfor %}
 </ol>
 {% endblock %}

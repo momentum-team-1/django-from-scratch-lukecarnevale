@@ -16,10 +16,10 @@ def deck_list(request):
 
     return render(request, 'deck_list.html', {"decks": decks})
 
-# @login_required
-# def flashcards_detail(request,pk):
-#     flashcards = get_object_or_404(request.user.flashcards, pk=pk)
-#     return render(request, "flashcards")
+@login_required
+def deck_detail(request,deck_pk):
+    deck = get_object_or_404(request.user.decks, pk=deck_pk)
+    return render(request, "deck_detail.html", {"deck": deck})
 
 # @login_required
 # def add_card(request, deck_pk):
