@@ -18,7 +18,7 @@ class Deck (models.Model):
 
 
 class Card (models.Model):
-    deck = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='cards')
+    deck = models.ForeignKey(to=Deck, on_delete=models.CASCADE, related_name='cards')
     question = models.CharField(max_length=255)
     answer = models.CharField(max_length=255)
 

@@ -8,12 +8,21 @@ Study Card Set - {{ deck.title }}
 
 <h2>{{ deck.title }}</h2>
 
-<ul>
-    {% for flashcard in flashcards.flashcard.all %}
-        <li>{{ flashcard }}</li>
-    {% endfor %}
-</ul>
+<h3>Questions</h3>
 
-<p>Link cards here</p>
+<ol>
+    {% for card in deck.cards.all %}
+        <li>{{ card.question }}</li>
+    {% endfor %}
+</ol>
+
+<h3>Answers</h3>
+
+<ol>
+    {% for card in deck.cards.all %}
+    <li>{{ card.answer }}</li>
+    {% endfor %}
+</ol>
+
 
 {% endblock %}

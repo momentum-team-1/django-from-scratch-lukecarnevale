@@ -17,8 +17,8 @@ def deck_list(request):
     return render(request, 'deck_list.html', {"decks": decks})
 
 @login_required
-def deck_detail(request,deck_pk):
-    deck = get_object_or_404(request.user.decks, pk=deck_pk)
+def deck_detail(request,pk):
+    deck = get_object_or_404(request.user.decks, pk=pk)
     return render(request, "deck_detail.html", {"deck": deck})
 
 # @login_required

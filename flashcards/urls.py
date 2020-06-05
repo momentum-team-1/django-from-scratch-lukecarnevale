@@ -21,7 +21,7 @@ from cards import views as flashcards_views
 urlpatterns = [
     path('', flashcards_views.homepage, name="homepage"),
     path('flashcards/', flashcards_views.deck_list, name='deck_list'),
-    path('flashcards/<int:deck_pk>/', flashcards_views.deck_detail, name='deck_detail'),
+    path('flashcards/<int:pk>/', flashcards_views.deck_detail, name='deck_detail'),
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
     # path('decks/new/', flashcards_views.add_deck, name='add_deck'),
