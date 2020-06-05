@@ -38,16 +38,17 @@ def add_deck(request):
 
 @login_required
 def add_card(request, pk):
+    deck = get_object_or_404(request.user.decks, pk=pk)
     form = CardForm(data=request.POST)
     if form.is_valid():
         card = form.save(commit=False)
-        card.deck = card
+        card.deck = deck
         card.save()
-        return redirect(to='deck_detail', pk=card.pk)
+        return redirect(to='deck_detail', pk=deck.pk)
     else:
         form = CardForm()
 
-    return render(request, "add_deck.html", {
+    return render(request, "add_card.html", {
         "form": form,
-        "card": card
+        "deck": deck,
         })

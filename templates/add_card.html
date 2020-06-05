@@ -1,15 +1,12 @@
-{% extends "base.html %}
+{% extends "base.html" %}
 
 {% block content %}
 
 <form action="{% url 'add_card' pk=deck.pk %}" method="POST">
-    {{% csrf_token %}}
+    {% csrf_token %}
     {{ form.as_p}}
     <div>
-        <button type="submit">Add Question to {{ deck.title }}</button>
-    </div>
-    <div>
-        <button type="submit">Add Answer to {{ deck.title }}</button>
+        <button type="submit">Add New flashcard to {{ deck.title }}</button>
     </div>
 </form>
 
