@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-from .models import Deck #or Flashcards
+from .models import Deck 
+from .forms import DeckForm
 
 def homepage(request):
     if request.user.is_authenticated:
@@ -21,21 +22,16 @@ def deck_detail(request,pk):
     deck = get_object_or_404(request.user.decks, pk=pk)
     return render(request, "deck_detail.html", {"deck": deck})
 
-# @login_required
-# def add_card(request, deck_pk):
-#     deck = get_object_or_404(request.user.deck, pk=deck_pk)
+@login_required
+def add_deck(request):
+    if request.method == "POST": #submitted the form
+        form = DeckForm(data=request.POST)
+        if form.is_valid():
+            deck = form.save(commit=False)
+            deck.user = request.user
+            deck.save()
+            return redirect(to='deck_detail', pk=deck.pk)
+    else: #viewing page for the first time
+        form = DeckForm()
 
-#     if request.method == "POST": #submitted the form
-#         form = FlashcardForm(data=request.POST)
-#         if form.is_valid():
-#             flashcard = form.save(commit=False)
-#             flashcard.deck = deck
-#             flashcard.save()
-#             return redirect(to='deck_list', deck_pk=deck.pk)
-#     else: #viewing page for the first time
-#         form = FlashcardForm()
-
-#     return render(request, "deck/add_card.html", {
-#            
-# 
-# })    
+    return render(request, "add_deck.html", {"form": form})    
