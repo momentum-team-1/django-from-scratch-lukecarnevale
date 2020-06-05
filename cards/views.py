@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-from .models import Deck 
-from .forms import DeckForm
+from .models import Deck, Card 
+from .forms import DeckForm, CardForm
 
 def homepage(request):
     if request.user.is_authenticated:
@@ -35,3 +35,19 @@ def add_deck(request):
         form = DeckForm()
 
     return render(request, "add_deck.html", {"form": form})    
+
+@login_required
+def add_card(request, pk):
+    form = CardForm(data=request.POST)
+    if form.is_valid():
+        card = form.save(commit=False)
+        card.deck = card
+        card.save()
+        return redirect(to='deck_detail', pk=card.pk)
+    else:
+        form = CardForm()
+
+    return render(request, "add_deck.html", {
+        "form": form,
+        "card": card
+        })

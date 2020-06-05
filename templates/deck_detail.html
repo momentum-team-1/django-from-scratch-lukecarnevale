@@ -14,6 +14,7 @@ Study Card Set - {{ deck.title }}
     {% for card in deck.cards.all %}
         <li>{{ card.question }}</li>
     {% endfor %}
+    <li><a href="{% url 'add_card' pk=deck.pk %}">Add another question</a></li>
 </ol>
 
 <h3>Answers</h3>
@@ -22,6 +23,7 @@ Study Card Set - {{ deck.title }}
     {% for card in deck.cards.all %}
     <li>{{ card.answer }}</li>
     {% endfor %}
+    <li><a href="{% url 'add_card' pk=deck.pk %}">Add another answer</a></li>
 </ol>
 
 

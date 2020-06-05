@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
     path('new/', flashcards_views.add_deck, name='add_deck'),
+    path('flashcards/<int:pk>/add_card/', flashcards_views.add_card, name='add_card'),
 ]
 
 if settings.DEBUG:
