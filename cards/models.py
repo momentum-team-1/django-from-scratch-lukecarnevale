@@ -7,7 +7,6 @@ class Deck (models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='decks', null=True)
     date = models.DateTimeField(auto_now_add=True, blank=True)
     title = models.CharField(max_length=255)
-    question = models.CharField(max_length=255)
     
     #add
     #delete
@@ -20,7 +19,7 @@ class Deck (models.Model):
 
 class Card (models.Model):
     deck = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='cards')
-    title = models.CharField(max_length=255)
+    question = models.CharField(max_length=255)
     answer = models.CharField(max_length=255)
 
     #attempts

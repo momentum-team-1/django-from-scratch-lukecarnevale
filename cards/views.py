@@ -5,16 +5,16 @@ from django.contrib.auth.decorators import login_required
 from .models import Deck #or Flashcards
 
 def homepage(request):
-    if request.user.is_authenticated():
-        return redirect(to='decks')
+    if request.user.is_authenticated:
+        return redirect(to='deck_list')
 
-    return render (request, "decks/home.html")
+    return render (request, "home.html")
 
 @login_required
 def deck_list(request):    
-    your_decks = request.user.decks.all()
+    decks = request.user.decks.all()
 
-    return render(request, 'decks/home.html', {"decks": your_decks})
+    return render(request, 'deck_list.html', {"decks": decks})
 
 # @login_required
 # def flashcards_detail(request,pk):
