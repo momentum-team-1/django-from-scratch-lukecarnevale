@@ -52,3 +52,12 @@ def add_card(request, pk):
         "form": form,
         "deck": deck,
         })
+
+@login_required
+def delete_deck(request, pk):
+    deck = get_object_or_404(request.user.decks, pk=pk)
+    if request.method == "POST":
+        deck.delete()
+        return redirect(to='deck_detail')
+
+    return render(request, "delete_deck.html", {"deck": deck})   

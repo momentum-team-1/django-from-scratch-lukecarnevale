@@ -28,5 +28,7 @@ Study Card Set - {{ deck.title }}
     {% endfor %}
 </ol>
 
+<p><a href="{% url 'delete_deck' pk=deck.pk %}">Delete this deck</a></p>
+
 
 {% endblock %}
