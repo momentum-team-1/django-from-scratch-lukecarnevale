@@ -61,3 +61,13 @@ def delete_deck(request, pk):
         return redirect(to='deck_list')
 
     return render(request, "delete_deck.html", {"deck": deck})   
+
+@login_required
+def view_question(request,pk):
+    deck = get_object_or_404(request.user.decks, pk=pk)
+    return render(request, "view_question.html", {"deck": deck})
+
+@login_required
+def view_answer(request,pk):
+    deck = get_object_or_404(request.user.decks, pk=pk)
+    return render(request, "view_answer.html", {"deck": deck})

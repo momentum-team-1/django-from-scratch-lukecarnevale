@@ -11,6 +11,9 @@ Study Card Set - {{ deck.title }}
 
 <p><a href="{% url 'add_card' pk=deck.pk %}">Add a flashcard</a></p>
 
+<p><a href="{% url 'view_question' pk=deck.pk %}">Study</a></p>
+
+
 
 <h3>Questions</h3>
 
@@ -27,6 +30,7 @@ Study Card Set - {{ deck.title }}
     <li>{{ card.answer }}</li>
     {% endfor %}
 </ol>
+
 
 <p><a href="{% url 'delete_deck' pk=deck.pk %}">Delete this deck</a></p>
 

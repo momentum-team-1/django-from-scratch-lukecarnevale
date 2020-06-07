@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<a href="{% url 'deck_detail' pk=deck.pk %}">Go back to {{ deck.title }}.</a>
+
+
+<h1>Answer</h1>
+
+
+
+
+
+<!-- add functionality to first view the question, then have a "see answer" to go to the corresponding answer, iterate through. 
+
+also have an option to go back to the corresponding deck -->
+
+
+<a href="{% url 'view_question' pk=deck.pk %}">Go to next question.</a>
+
+
+{% endblock %}
