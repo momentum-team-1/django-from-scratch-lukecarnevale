@@ -1,19 +1,27 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 Study Card Set - {{ deck.title }}
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/card.js' %}"></script>
 {% endblock %}
 
 {% block content %}
 
 <h2>{{ deck.title }}</h2>
 
-
-<p><a href="{% url 'add_card' pk=deck.pk %}">Add a flashcard</a></p>
-
 <p><a href="{% url 'view_question' pk=deck.pk %}">Study</a></p>
 
+<p><a id="show-card-form" href="{% url 'add_card' pk=deck.pk %}">Add a flashcard</a></p>
 
+<form class="dn" id="card-form" action="{% url 'add_card' pk=deck.pk %}" method="POST">
+    {% csrf_token %}
+    {{ card_form.as_p }}
+    <div><button type="submit">Add Flashcard</button></div>
+</form>
 
 <h3>Questions</h3>
 
@@ -31,6 +39,7 @@ Study Card Set - {{ deck.title }}
     {% endfor %}
 </ol>
 
+<p class="f6"><a href="{% url 'edit_card' pk=deck.pk %}">edit flashcards</a></p>
 
 <p><a href="{% url 'delete_deck' pk=deck.pk %}">Delete this deck</a></p>
 

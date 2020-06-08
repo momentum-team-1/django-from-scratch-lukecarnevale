@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<a href="{% url 'deck_detail' pk=deck.pk %}">Go back to {{ deck.title }}.</a>
+<a href="{% url 'deck_detail' pk=deck.pk %}">Go back to {{ deck.title }}</a>
 
 
 <h1>Question</h1>
@@ -16,7 +16,7 @@
 
 also have an option to go back to the corresponding deck -->
 
-<a href="{% url 'view_answer' pk=deck.pk %}">Check answer.</a>
+<a href="{% url 'view_answer' pk=deck.pk %}">Check answer</a>
 
 
 {% endblock %}
