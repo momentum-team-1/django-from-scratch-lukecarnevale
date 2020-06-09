@@ -16,8 +16,10 @@
 
 also have an option to go back to the corresponding deck -->
 
+<h1>{{ cards.answer }}</h1>
 
-<a href="{% url 'view_question' pk=deck.pk %}">Go to next question.</a>
+
+<a href="{% url 'view_question' pk=card.pk %}">Go to next question.</a>
 
 
 {% endblock %}

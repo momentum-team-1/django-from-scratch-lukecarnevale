@@ -8,13 +8,9 @@ class Deck (models.Model):
     date = models.DateTimeField(auto_now_add=True, blank=True)
     title = models.CharField(max_length=255)
     
-    #add
-    #delete
-    #edit
-
-
     # def __str__(self):
-    #     return f"{self.title} {self.question}"
+    #     return self.deck_name
+
 
 
 class Card (models.Model):
@@ -22,13 +18,5 @@ class Card (models.Model):
     question = models.CharField(max_length=255)
     answer = models.CharField(max_length=255)
 
-    #attempts
-    #successes
-    #add
-    #delete
-    #edit
-
     # def __str__(self):
-    #     return f"{self.title} {self.answer}"
-
-#add more classes down here, but migrate after creating
+    #     return f"{self.prompt} {self.answer}"

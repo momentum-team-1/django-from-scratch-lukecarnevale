@@ -81,11 +81,26 @@ def delete_deck(request, pk):
     return render(request, "delete_deck.html", {"deck": deck})   
 
 @login_required
-def view_question(request,pk):
-    deck = get_object_or_404(request.user.decks, pk=pk)
-    return render(request, "view_question.html", {"deck": deck})
+def view_question(request,card_pk):
+    cards = get_object_or_404(Card, pk=card_pk)
+    return render(request, "view_question.html", {"cards": cards})
 
 @login_required
-def view_answer(request,pk):
-    deck = get_object_or_404(request.user.decks, pk=pk)
-    return render(request, "view_answer.html", {"deck": deck})
+def view_answer(request,card_pk):
+    cards = get_object_or_404(Card, pk=card_pk)
+    return render(request, "view_answer.html", {"cards": cards})
+
+@login_required
+def delete_flashcard(request, card_pk):
+    cards = get_object_or_404(Card, pk=card_pk)
+
+    if request.method == "POST":
+        cards.delete()
+        return redirect (to='deck_detail')
+    
+    return render(request, "delete_flashcard.html", {"cards": cards})
+
+# @login_required
+# def view_tag(request, tag_name):
+#     tag = get_object_or_404(Tag, tag=tag_name)
+    

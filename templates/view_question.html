@@ -8,15 +8,11 @@
 
 <h1>Question</h1>
 
-<h3>{{ question.title }} </h3>
+<h3>{{ cards.answer }} </h3>
 
 
 
-<!-- add functionality to first view the question, then have a "see answer" to go to the corresponding answer, iterate through. 
-
-also have an option to go back to the corresponding deck -->
-
-<a href="{% url 'view_answer' pk=deck.pk %}">Check answer</a>
+<a href="{% url 'view_answer' cards=card %}">Check answer</a>
 
 
 {% endblock %}
