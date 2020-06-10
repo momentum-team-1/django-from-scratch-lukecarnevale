@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form action="{% url 'delete_flashcard' pk=card_pk %}" method="POST">
+<form action="{% url 'delete_flashcard' card_pk=flashcards.pk %}" method="POST">
     {% csrf_token %}
     <p>Are you sure you want to delete {{ card }}?</p>
     <p>

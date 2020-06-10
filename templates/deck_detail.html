@@ -13,7 +13,7 @@ Study Card Set - {{ deck.title }}
 
 <h2>{{ deck.title }}</h2>
 
-<p><a href="{% url 'view_question' pk=deck.pk %}">Study</a></p>
+<p><a href="{% url 'view_question' card_pk=next_card.pk %}">Study</a></p>
 
 <p><a id="show-card-form" href="{% url 'add_card' pk=deck.pk %}">Add a flashcard</a></p>
 

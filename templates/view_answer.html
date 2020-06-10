@@ -6,7 +6,7 @@
 <a href="{% url 'deck_detail' pk=deck.pk %}">Go back to {{ deck.title }}.</a>
 
 
-<h1>Answer</h1>
+<h2>Answer</h2>
 
 
 
@@ -16,10 +16,10 @@
 
 also have an option to go back to the corresponding deck -->
 
-<h1>{{ cards.answer }}</h1>
+<h1>{{ card.answer }}</h1>
 
 
-<a href="{% url 'view_question' pk=card.pk %}">Go to next question.</a>
+<a href="{% url 'view_question' card_pk=card.pk %}">Go to next question</a>
 
 
 {% endblock %}

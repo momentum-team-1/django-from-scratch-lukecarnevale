@@ -5,14 +5,17 @@
 
 <a href="{% url 'deck_detail' pk=deck.pk %}">Go back to {{ deck.title }}</a>
 
+<a href="{% url 'next_question' card_pk=card.pk %}">Randomize</a>
 
-<h1>Question</h1>
+<h2>Question</h2>
 
-<h3>{{ cards.answer }} </h3>
+<h1>{{ card.question }} </h1>
+<h1>{{ card.answer }} </h1>
 
 
+<!-- 
+<a href="{% url 'view_answer' card_pk=card.pk %}">Check answer</a> -->
 
-<a href="{% url 'view_answer' cards=card %}">Check answer</a>
-
+<a href="{% url 'next_question' card_pk=card.pk %}">Next</a>
 
 {% endblock %}

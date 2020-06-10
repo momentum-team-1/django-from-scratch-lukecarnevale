@@ -28,9 +28,10 @@ urlpatterns = [
     path('new/', flashcards_views.add_deck, name='add_deck'),
     path('flashcards/<int:pk>/add_card/', flashcards_views.add_card, name='add_card'),
     path('flashcards/<int:pk>/delete/', flashcards_views.delete_deck, name='delete_deck'),
-    path('flashcards/<int:pk>/view_question/', flashcards_views.view_question, name='view_question'),
-    path('flashcards/<int:pk>/view_answer/', flashcards_views.view_answer, name='view_answer'),
-    path('flashcards/<int:pk>/delete_flashcard/', flashcards_views.delete_flashcard, name='delete_flashcard'),
+    path('flashcards/<int:card_pk>/view_question/', flashcards_views.view_question, name='view_question'),
+    path('flashcards/<int:card_pk>/view_answer/', flashcards_views.view_answer, name='view_answer'),
+    path('flashcards/<int:card_pk>/delete_flashcard/', flashcards_views.delete_flashcard, name='delete_flashcard'),
+    path('flashcards/<int:card_pk>/next_question/', flashcards_views.next_question, name='next_question'),
 ]
 
 if settings.DEBUG:

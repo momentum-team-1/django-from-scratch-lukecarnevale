@@ -21,7 +21,8 @@ def deck_list(request):
 def deck_detail(request,pk):
     deck = get_object_or_404(request.user.decks, pk=pk)
     card_form = CardForm()
-    return render(request, "deck_detail.html", {"deck": deck, "card_form": card_form,})
+    next_card = deck.cards.first()
+    return render(request, "deck_detail.html", {"deck": deck, "card_form": card_form, "next_card": next_card})
 
 @login_required
 def add_deck(request):
@@ -82,23 +83,41 @@ def delete_deck(request, pk):
 
 @login_required
 def view_question(request,card_pk):
-    cards = get_object_or_404(Card, pk=card_pk)
-    return render(request, "view_question.html", {"cards": cards})
+    card = get_object_or_404(Card, pk=card_pk)
+    
+    return render(request, "view_question.html", {"card": card, "deck": card.deck,})
+
+@login_required
+def next_question(request,card_pk):
+    card = get_object_or_404(Card, pk=card_pk)
+    next_pk = card.deck.cards.order_by('?').first().pk
+    
+    return redirect('view_question', card_pk=next_pk)
+
+
+@login_required
+def next_card(request,card_pk):
+    card = get_object_or_404(Card, pk=card_pk)
+
+    return render(request, "next_question")
+    
+
+
 
 @login_required
 def view_answer(request,card_pk):
-    cards = get_object_or_404(Card, pk=card_pk)
-    return render(request, "view_answer.html", {"cards": cards})
+    card = get_object_or_404(Card, pk=card_pk)
+    return render(request, "view_answer.html", {"card": card, "deck": card.deck,})
 
 @login_required
 def delete_flashcard(request, card_pk):
-    cards = get_object_or_404(Card, pk=card_pk)
+    card = get_object_or_404(Card, pk=card_pk)
 
     if request.method == "POST":
-        cards.delete()
+        card.delete()
         return redirect (to='deck_detail')
     
-    return render(request, "delete_flashcard.html", {"cards": cards})
+    return render(request, "delete_flashcard.html", {"card": card, "deck": card.deck,})
 
 # @login_required
 # def view_tag(request, tag_name):
