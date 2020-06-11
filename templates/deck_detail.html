@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Study Card Set - {{ deck.title }}
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/card.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<h2>{{ deck.title }}</h2>
+
+<p class="f4"><a href="{% url 'view_question' card_pk=next_card.pk %}" class="m3 link dim dark-blue">Study</a></p>
+
+<p><a id="show-card-form" href="{% url 'add_card' pk=deck.pk %}" class="link dim navy">Add a flashcard</a></p>
+
+<form class="dn" id="card-form" action="{% url 'add_card' pk=deck.pk %}" method="POST">
+    {% csrf_token %}
+    {{ card_form.as_p }}
+    <div><button type="submit">Add Flashcard</button></div>
+</form>
+<div>
+    <h2 class="tc">Cards</h2>
+
+    <ol class="flex flex-wrap list pl0">
+        {% for card in deck.cards.all %}
+            <div class="tc outline w-25 pa4 mr2 h5">
+                <li>
+                <strong>Front:</strong> 
+                {{ card.question }}  | 
+                <strong>Back:</strong> 
+                {{ card.answer}}
+                <p>Card Mastered: {{ card.mastered }} </p>
+                <p><a href="{% url 'edit_card' pk=card.pk %}" class="link dim dark-green">Edit</a></p>
+                <br>
+                <p class="f6 light-red">Delete</p>
+            </li>
+        </div>
+        {% endfor %}
+    </ol>
+
+
+</div>
+
+
+<p class="tc ba b--light-red "><a href="{% url 'delete_deck' pk=deck.pk %}" class="link dim light-red">Delete this deck</a></p>
+
+
+{% endblock %}

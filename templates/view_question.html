@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block scripts %}
+<script src="{% static 'js/reveal.js' %}" defer></script>
+{% endblock %}
+{% block content %}
+
+<br>
+<a class="m3 link dim dark-blue" href="{% url 'deck_detail' pk=deck.pk %}">Go back to {{ deck.title }}</a>
+<br>
+<br>
+
+<p class="tc f7"><em>Click the front to flip card to reveal back</em></p>
+<div class="jc">
+    <div class="card-container">
+        <div class="front"><p class="f6">Front</p>
+            <h1 class='center'>{{ card.question }} </h1></div>
+        <div class="back"><p class="f6">Back</p>
+            <p class="f1">{{ card.answer }}</p></div>
+    </div>
+</div>
+
+<p class="tc"> You have mastered this card: {{ card.mastered }} </p>
+<!-- 
+<a href="{% url 'view_answer' card_pk=card.pk %}">Check answer</a> -->
+<br>
+<div class="f3 tc">
+    <a href="{% url 'next_question' card_pk=card.pk %}" class="link dim dark-blue">Next Card</a>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="{% url 'delete_flashcard' card_pk=flashcards.pk %}" method="POST">
+    {% csrf_token %}
+    <p>Are you sure you want to delete {{ card }}?</p>
+    <p>
+        <button class="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-green" type="submit">Yes</button>
+        <a class="f7 link dim br3 ba bw2 ph3 pv2 mb2 dib dark-red" href="{% url 'deck_detail' deck_pk=deck.pk %}">Cancel</a>
+    </p>
+    
+</form>
+
+{% endblock %}
