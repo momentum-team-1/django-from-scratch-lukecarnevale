@@ -12,13 +12,17 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="sans-serif">
-    <div class="mw8 center ph3 pv4">
+    <div class="mw0 center ph3 pv4">
         <div class="pa2 bg-navy white">
             <h1><a class="white no-underline" href="{% url 'homepage' %}">Flashcard Study Website</a></h1>
             {% if user.is_authenticated %}
             <div>
                 Hello, {{ user.username }}!
-                <a href="{% url 'auth_logout' %}">Logout</a>
+                <br>
+                <br>
+                <div class="jr">
+                    <a href="{% url 'auth_logout' %}" class="link dim near-white">Logout</a>
+                </div>
             </div>
             {% endif %}
         </div>

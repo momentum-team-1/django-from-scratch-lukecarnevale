@@ -6,7 +6,7 @@
 <form action="{% url 'delete_deck' pk=deck.pk %}" method="POST">
     {% csrf_token %}
     {{ form.as_p}}
-    <p>Are you sure you want to delete {{ deck.title }}?</p>
+    <p>Are you sure you want to delete the entire {{ deck.title }} deck?</p>
     <p>
         <button class="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-green" type="submit">Yes</button>
         <a class="f7 link dim br3 ba bw2 ph3 pv2 mb2 dib dark-red" href="{% url 'deck_detail' pk=deck.pk %}">Cancel</a>

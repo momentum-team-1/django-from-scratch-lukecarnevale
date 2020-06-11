@@ -3,13 +3,13 @@
 {% block content %}
 <h2>Your Study Decks</h2>
 
-<p>
-    <a href="{% url 'add_deck' %}">Add a new deck of Study Cards</a>
+<p class="f4">
+    <a href="{% url 'add_deck' %}" class="link dim navy">Add a new deck of Study Cards</a>
 </p>
 
-<ol>
+<ol class="f3 dark-blue">
     {% for deck in decks %}
-        <li><a href="{% url 'deck_detail' pk=deck.pk %}">{{ deck.title }}</a></li>
+        <li><a href="{% url 'deck_detail' pk=deck.pk %}" class="link dim dark-blue ">{{ deck.title }}</a></li>
     {% endfor %}
 </ol>
 
