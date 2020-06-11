@@ -13,7 +13,9 @@ Study Card Set - {{ deck.title }}
 
 <h2>{{ deck.title }}</h2>
 
+{% if next_card %}
 <p class="f4"><a href="{% url 'view_question' card_pk=next_card.pk %}" class="m3 link dim dark-blue">Study</a></p>
+{% endif %}
 
 <p><a id="show-card-form" href="{% url 'add_card' pk=deck.pk %}" class="link dim navy">Add a flashcard</a></p>
 
@@ -25,18 +27,23 @@ Study Card Set - {{ deck.title }}
 <div>
     <h2 class="tc">Cards</h2>
 
-    <ol class="flex flex-wrap list pl0">
+    <ol class="flex flex-wrap list pl0 ">
         {% for card in deck.cards.all %}
-            <div class="tc outline w-25 pa4 mr2 h5">
+            <div class="tc outline w-25 pa4  h5">
                 <li>
                 <strong>Front:</strong> 
                 {{ card.question }}  | 
                 <strong>Back:</strong> 
                 {{ card.answer}}
-                <p>Card Mastered: {{ card.mastered }} </p>
+                <p>{% if card.mastered is True %}
+                    <p class="f5 tc"> Mastered Card: <span class="fa fa-star star checked"></span></p>
+                    
+                    {% else %}
+                    <p class="f5 tc"> Mastered Card: <span class="fa fa-star"></span> </p>
+                    {% endif %} </p>
                 <p><a href="{% url 'edit_card' pk=card.pk %}" class="link dim dark-green">Edit</a></p>
                 <br>
-                <p class="f6 light-red">Delete</p>
+                <p><a href="{% url 'delete_flashcard' card_pk=card.pk %}" class="link dim light-red">Delete</a></p>
             </li>
         </div>
         {% endfor %}
@@ -44,9 +51,8 @@ Study Card Set - {{ deck.title }}
 
 
 </div>
-
-
-<p class="tc ba b--light-red "><a href="{% url 'delete_deck' pk=deck.pk %}" class="link dim light-red">Delete this deck</a></p>
+<br>
+<p class="tc"><a href="{% url 'delete_deck' pk=deck.pk %}" class="link dim light-red ph3 pv2 bb ba b--light-red">Delete this deck</a></p>
 
 
 {% endblock %}

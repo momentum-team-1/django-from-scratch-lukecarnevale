@@ -48,3 +48,7 @@
 .card-container {
 	perspective: 75rem;
 }
+
+.checked {
+    color: orange;
+}
