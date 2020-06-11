@@ -57,19 +57,19 @@ def add_card(request, pk):
 
 @login_required
 def edit_card(request, pk):
-    deck = get_object_or_404(request.user.decks, pk=pk)
+    card = get_object_or_404(Card, pk=pk)
 
     if request.method == "POST":
-        form = CardForm(instance=deck, data=request.POST)
+        form = CardForm(instance=card, data=request.POST)
         if form.is_valid():
-            deck = form.save()
-            return redirect(to='deck_detail', pk=deck.pk)
+            card = form.save()
+            return redirect(to='deck_detail', pk=card.deck.pk)
     else:
-        form = CardForm(instance=deck)
+        form = CardForm(instance=card)
 
     return render(request, "edit_card.html", {
         "form": form,
-        "deck": deck,
+        "card": card,
         })
 
 @login_required

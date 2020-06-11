@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<h2>Edit Cards</h2>
+<h2>Edit Card</h2>
 
 <form action="{% url 'edit_card' pk=card.pk %}" method="POST">
     {% csrf_token %}
     {{ form.as_p}}
     <div>
-        <button type="submit">Make updates to flashcard to {{ deck.title }}</button>
+        <button type="submit">Make updates</button>
     </div>
 </form>
 

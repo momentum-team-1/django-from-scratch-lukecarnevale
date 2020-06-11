@@ -13,5 +13,7 @@ class CardForm(forms.ModelForm):
         model = Card
         fields = [
             'question',
-            'answer'
+            'answer',
+            'mastered'
         ]
+

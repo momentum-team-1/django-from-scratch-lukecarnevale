@@ -9,15 +9,17 @@ class Deck (models.Model):
     title = models.CharField(max_length=255)
     is_active = models.BooleanField(default=False)
     
-    # def __str__(self):
-    #     return self.cards
+    def __str__(self):
+        return self.title
 
 
 
 class Card (models.Model):
     deck = models.ForeignKey(to=Deck, on_delete=models.CASCADE, related_name='cards')
-    question = models.TextField()
-    answer = models.TextField()
+    question = models.CharField(max_length=255)
+    answer = models.CharField(max_length=255)
+    mastered = models.BooleanField("Mastered", default=False)
 
-    # def __str__(self):
-    #     return f"{self.question} {self.answer}"
+    def __str__(self):
+        return f"{self.question} {self.answer}" 
+        

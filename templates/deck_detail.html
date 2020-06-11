@@ -22,24 +22,25 @@ Study Card Set - {{ deck.title }}
     {{ card_form.as_p }}
     <div><button type="submit">Add Flashcard</button></div>
 </form>
+<div>
+    <h2>Cards</h2>
 
-<h3>Questions</h3>
+    <ol>
+        {% for card in deck.cards.all %}
+            <li>
+                <strong>Front:</strong> 
+                {{ card.question }}  | 
+                <strong>Back:</strong> 
+                {{ card.answer}}
+                <p>Card Mastered: {{ card.mastered }} </p>
+                <p><a href="{% url 'edit_card' pk=card.pk %}">Edit this card</a></p>
+            </li>
+        {% endfor %}
+    </ol>
 
-<ol>
-    {% for card in deck.cards.all %}
-        <li>{{ card.question }}</li>
-    {% endfor %}
-</ol>
 
-<h3>Answers</h3>
+</div>
 
-<ol>
-    {% for card in deck.cards.all %}
-    <li>{{ card.answer }}</li>
-    {% endfor %}
-</ol>
-
-<p class="f6"><a href="{% url 'edit_card' pk=deck.pk %}">edit flashcards</a></p>
 
 <p><a href="{% url 'delete_deck' pk=deck.pk %}">Delete this deck</a></p>
 
