@@ -12,25 +12,32 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" defer>
 
-<div></div>
 </head>
-<body class="sans-serif">
-    <div class="mw0 center ph3 pv4">
-        <div class="pa2 bg-navy white">
-            <h1><a class="white no-underline" href="{% url 'homepage' %}">Flashcard Study Website</a></h1>
-            {% if user.is_authenticated %}
-            <div>
-                Hello, {{ user.username }}!
-                <br>
-                <br>
-                <div class="jr">
-                    <a href="{% url 'auth_logout' %}" class="link dim near-white">Logout</a>
-                </div>
-            </div>
-            {% endif %}
+<body class="sans-serif mw7 center ph3 ph5-ns tc br2 pv5">
+    <article class="mw7 center ph3 ph5-ns tc br2 pv5 bg-navy white mb5">
+        <h1 class="fw6 f3 f2-ns lh-title mt0 mb3">
+            <a class="white no-underline pa1" href="{% url 'homepage' %}">Flashcard Study Website</a>
+        </h1>
+        <h2 class="fw2 f4 lh-copy mt0 mb3">
+            Create decks of card to study with!
+        </h2>
+        {% if user.is_authenticated %}
+        <p class="fw1 f5 mt0 mb3">
+        Hello, {{ user.username }}!
+        </p>
+        <div>
+            <a class="f6 br-pill bg-light-blue no-underline washed-green ba b--light-blue grow pv2 ph3 dib mr3"
+            href="{% url 'auth_logout' %}">
+            Logout
+        </a>
+        <a class="f6 br-pill white no-underline ba grow pv2 ph3 dib"
+            href="#">
+            Learn More
+        </a>
+        {% endif %}
         </div>
+    </article>
         {% block content %}
         {% endblock %}
-    </div>
 </body>
 </html>

@@ -4,10 +4,10 @@
 
 <form action="{% url 'delete_flashcard' card_pk=card.pk %}" method="POST">
     {% csrf_token %}
-    <p>Are you sure you want to delete {{ card }}?</p>
+    <p class="fw1 f3 mt0 mb3">Are you sure you want to delete {{ card }}?</p>
     <p>
-        <button class="f6 link dim br3 ph3 pv2 mb2 dib white bg-dark-green" type="submit">Yes</button>
-        <a class="f7 link dim br3 ba bw2 ph3 pv2 mb2 dib dark-red" href="{% url 'deck_detail' pk=deck.pk %}">Cancel</a>
+        <button class="f5 br-pill bg-dark-green no-underline washed-green ba b--dark-green grow pv1 ph3 dib mr3" type="submit">Yes</button>
+        <a class="f5 br-pill bg-red no-underline washed-green ba b--light-red grow pv1 ph3 dib mr3" href="{% url 'deck_detail' pk=deck.pk %}">Cancel</a>
     </p>
     
 </form>

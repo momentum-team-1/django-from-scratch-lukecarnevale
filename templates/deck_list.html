@@ -1,16 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Your Study Decks</h2>
+<div class="fw1 f5 mt0 mb3">
+    <h2 class="f2 fw2 navy">Your Study Decks</h2>
+    <div class="tc mr4">
+        <ul class="f3 dark-blue">
+            {% for deck in decks %}
+                <li class="grow list pl0 mb2"><a href="{% url 'deck_detail' pk=deck.pk %}" class="link dim dark-blue">{{ deck.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
+    <p class="f4 fw3 ml4">
+        <a href="{% url 'add_deck' %}" class="f6 br-pill bg-navy no-underline washed-green ba b--navy grow pv2 ph3 dib mr3">Add a new deck of Study Cards</a>
+    </p>
 
-<p class="f4">
-    <a href="{% url 'add_deck' %}" class="link dim navy">Add a new deck of Study Cards</a>
-</p>
 
-<ol class="f3 dark-blue">
-    {% for deck in decks %}
-        <li><a href="{% url 'deck_detail' pk=deck.pk %}" class="link dim dark-blue ">{{ deck.title }}</a></li>
-    {% endfor %}
-</ol>
-
+</div>
 {% endblock %}

@@ -11,29 +11,28 @@ Study Card Set - {{ deck.title }}
 
 {% block content %}
 
-<h2>{{ deck.title }}</h2>
+<h2 class="fw1 f2 mt0 mb3">{{ deck.title }}</h2>
 
 {% if next_card %}
-<p class="f4"><a href="{% url 'view_question' card_pk=next_card.pk %}" class="m3 link dim dark-blue">Study</a></p>
+<p class="f4 br-pill"><a href="{% url 'view_question' card_pk=next_card.pk %}" class="f4 fw2 br-pill bg-light-purple no-underline washed-green ba b--light-purple grow pv2 ph3 dib mr3">Study</a></p>
 {% endif %}
 
-<p><a id="show-card-form" href="{% url 'add_card' pk=deck.pk %}" class="link dim navy">Add a flashcard</a></p>
+<p class="tl"><a id="show-card-form" href="{% url 'add_card' pk=deck.pk %}" class="f6 br-pill bg-navy no-underline washed-green ba b--navy grow pv2 ph3 dib mr3">Add a flashcard</a></p>
 
-<form class="dn" id="card-form" action="{% url 'add_card' pk=deck.pk %}" method="POST">
+<form class="dn br-pill" id="card-form" action="{% url 'add_card' pk=deck.pk %}" method="POST">
     {% csrf_token %}
     {{ card_form.as_p }}
     <div><button type="submit">Add Flashcard</button></div>
 </form>
 <div>
-    <h2 class="tc">Cards</h2>
 
     <ol class="flex flex-wrap list pl0 ">
         {% for card in deck.cards.all %}
-            <div class="tc outline w-25 pa4  h5">
-                <li>
+            <div class="tc outline w-25 pa4 h5 br4">
+                <li class="fw1 f5 mt0 mb3">
                 <strong>Front:</strong> 
-                {{ card.question }}  | 
-                <strong>Back:</strong> 
+                {{ card.question }}   
+                <strong class="">Back:</strong> 
                 {{ card.answer}}
                 <p>{% if card.mastered is True %}
                     <p class="f5 tc"> Mastered Card: <span class="fa fa-star star checked"></span></p>
@@ -41,9 +40,9 @@ Study Card Set - {{ deck.title }}
                     {% else %}
                     <p class="f5 tc"> Mastered Card: <span class="fa fa-star"></span> </p>
                     {% endif %} </p>
-                <p><a href="{% url 'edit_card' pk=card.pk %}" class="link dim dark-green">Edit</a></p>
-                <br>
-                <p><a href="{% url 'delete_flashcard' card_pk=card.pk %}" class="link dim light-red">Delete</a></p>
+                    <br>
+                <p><a href="{% url 'edit_card' pk=card.pk %}" class="f7 mb1 br-pill bg-dark-green no-underline washed-green ba b--navy grow pv1 ph3 dib mr3">Edit</a>
+                <a href="{% url 'delete_flashcard' card_pk=card.pk %}" class="f7 br-pill bg-light-red no-underline washed-green ba b--light-red grow pv1 ph3 dib mr3">Delete</a></p>
             </li>
         </div>
         {% endfor %}
@@ -52,7 +51,7 @@ Study Card Set - {{ deck.title }}
 
 </div>
 <br>
-<p class="tc"><a href="{% url 'delete_deck' pk=deck.pk %}" class="link dim light-red ph3 pv2 bb ba b--light-red">Delete this deck</a></p>
+<p class="tc"><a href="{% url 'delete_deck' pk=deck.pk %}" class="link dim light-red ph3 pv2 bb ba br4 b--light-red">Delete this deck</a></p>
 
 
 {% endblock %}

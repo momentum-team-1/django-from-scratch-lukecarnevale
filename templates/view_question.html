@@ -7,8 +7,9 @@
 {% endblock %}
 {% block content %}
 
-<br>
-<a class="m3 link dim dark-blue" href="{% url 'deck_detail' pk=deck.pk %}">Go back to {{ deck.title }}</a>
+<div class="tl">
+    <a class="f6 br-pill bg-gray no-underline washed-green ba b--navy grow pv2 ph3 dib mr3" href="{% url 'deck_detail' pk=deck.pk %}"><-- Go back to {{ deck.title }} Deck</a>
+</div>
 <br>
 <br>
 
@@ -24,15 +25,15 @@
 </div>
 
 {% if card.mastered is True %}
-<p class="f4 tc"> You have mastered this card: <span class="fa fa-star star checked"></span></p>
+<p class="fw1 f4 mt0 mb3 tc navy"> You have mastered this card: <span class="fa fa-star star checked"></span></p>
 
 {% else %}
-<p class="f4 tc"> You have mastered this card: <span class="fa fa-star"></span> </p>
+<p class="fw1 f4 mt0 mb3 tc navy"> You have mastered this card: <span class="fa fa-star"></span> </p>
 {% endif %}
 
 
 <br>
 <div class="f3 tc">
-    <a href="{% url 'next_question' card_pk=card.pk %}" class="link dim dark-blue ph3 pv2 bb ba b--navy">Next Card</a>
+    <a href="{% url 'next_question' card_pk=card.pk %}" class="link dim dark-blue ph3 pv2 bb ba br-pill b--navy">Next Card</a>
 </div>
 {% endblock %}

@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<h2>Add a new deck of study cards</h2>
+<h2 class="f2 fw2 navy">Add a new deck of study cards</h2>
 
 <form action="{% url 'add_deck' %}" method="POST">
   {% csrf_token %}
   {{ form.as_p }}
   <div>
-    <button type="submit">Add new deck</button>
+    <button type="submit" class="">Add new deck</button>
   </div>
 </form>
 
